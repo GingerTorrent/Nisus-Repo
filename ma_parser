@@ -1,0 +1,38 @@
+import argparse
+import os
+
+def get_program_name():
+    # Uzyskanie nazwy programu na podstawie nazwy pliku
+    return os.path.splitext(os.path.basename(__file__))[0]
+
+def print_program_info(version):
+    print(f"{get_program_name()} Version {version}")
+  
+def main():
+
+    program_name = get_program_name()
+
+    # Tworzenie parsera
+    parser = argparse.ArgumentParser(description='Prosty parser argumentów.')
+
+    # Dodawanie argumentów
+    parser.add_argument('--name', type=str, help='Twoje imię')
+    parser.add_argument('--age', type=int, help='Twoj wiek')
+    parser.add_argument('--height', type=int, help='Twój wzrost')
+    parser.add_argument('--info', type=int, help='W tym programie masz wskazać swoje imię, wiek oraz wzrost w cm')
+    
+    # Parsowanie argumentów z linii poleceń
+    args = parser.parse_args()
+
+    print(f"{program_name} 1.0")
+
+    # Wyświetlanie rezultatów
+    if args.name:
+        print(f'Witaj, {args.name}!')
+    if args.age:
+        print(f'Masz {args.age} lat.')
+    if args.height:
+        print(f"Urosłeś {args.height} cm!")
+
+if __name__ == '__main__':
+    main()
